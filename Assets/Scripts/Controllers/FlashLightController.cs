@@ -4,27 +4,56 @@ using UnityEngine;
 
 namespace Shooter
 {
-    public class FlashLightController: BaseController, IOnInitialize
+    public class FlashLightController: BaseController , IOnInitialize, IOnUpdate
     {
-        private Inventory _inventory = new Inventory();
+        public FlashLightModel _flashLight = Object.FindObjectOfType<FlashLightModel>();
         
         public void OnStart()
         {
-            Debug.Log("onstart");
+            _flashLight.currentCharge = _flashLight.maxCharge;
+            _flashLight.Light.intensity = 0;
+            IsActive = false;
         }
         public override void On()
         {
+            Debug.Log("on");
             base.On();
-            _inventory.FlashLight.Light.intensity = 1;
+            _flashLight.Light.intensity = 1;
         }
         public override void Off()
         {
+            Debug.Log("off");
             base.Off();
-            _inventory.FlashLight.Light.intensity = 0;
+            _flashLight.Light.intensity = 0;
         }
+
         private void Rotation()
         {
             //_flashLight.transform.position = _flashLight
+        }
+
+        public void OnUpdate()
+        {
+            if (IsActive && _flashLight.currentCharge > 0)
+            {
+                DecreaseCharge();
+            }
+            
+            if (!IsActive && _flashLight.currentCharge < _flashLight.maxCharge)
+            {
+                IncreaseCharge();
+            }
+            Debug.Log(IsActive);
+        }
+
+        private void DecreaseCharge()
+        {
+            _flashLight.currentCharge -= Time.deltaTime;
+        }
+
+        private void IncreaseCharge()
+        {
+            _flashLight.currentCharge += Time.deltaTime;
         }
     }
 }

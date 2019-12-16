@@ -573,7 +573,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Rigidbody: {fileID: 0}
-  Light: {fileID: 0}
+  maxCharge: 10
+  currentCharge: 0
   GoFollow: {fileID: 0}
   VecOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &1736496011

@@ -16,7 +16,7 @@ namespace Shooter
             IsActive = false;
         }
 
-        public void Switch()
+        public virtual void Switch()
         {
             Debug.Log("Switch");
             if (IsActive)
