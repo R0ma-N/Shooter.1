@@ -7,24 +7,39 @@ namespace Shooter
     public class FlashLightController: BaseController , IOnInitialize, IOnUpdate
     {
         public FlashLightModel _flashLight = Object.FindObjectOfType<FlashLightModel>();
+        private BatteryCharge _batteryCharge;
         
         public void OnStart()
         {
+            _batteryCharge = new BatteryCharge();
             _flashLight.currentCharge = _flashLight.maxCharge;
-            _flashLight.Light.intensity = 0;
-            IsActive = false;
+            _flashLight.Light.enabled = false;
+        }
+        public void OnUpdate()
+        {
+            if (_flashLight.IsOn && _flashLight.currentCharge > 0)
+            {
+                DecreaseCharge();
+            }
+
+            if (!_flashLight.IsOn && _flashLight.currentCharge < _flashLight.maxCharge)
+            {
+                IncreaseCharge();
+            }
         }
         public override void On()
         {
-            Debug.Log("on");
             base.On();
-            _flashLight.Light.intensity = 1;
+            _flashLight.Light.enabled = true;
+            _flashLight.IsOn = true;
+            _batteryCharge._char6[0].enabled = false;
         }
         public override void Off()
         {
             Debug.Log("off");
             base.Off();
-            _flashLight.Light.intensity = 0;
+            _flashLight.Light.enabled = false;
+            _flashLight.IsOn = false;
         }
 
         private void Rotation()
@@ -32,19 +47,6 @@ namespace Shooter
             //_flashLight.transform.position = _flashLight
         }
 
-        public void OnUpdate()
-        {
-            if (IsActive && _flashLight.currentCharge > 0)
-            {
-                DecreaseCharge();
-            }
-            
-            if (!IsActive && _flashLight.currentCharge < _flashLight.maxCharge)
-            {
-                IncreaseCharge();
-            }
-            Debug.Log(IsActive);
-        }
 
         private void DecreaseCharge()
         {

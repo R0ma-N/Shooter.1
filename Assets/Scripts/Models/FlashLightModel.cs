@@ -7,6 +7,7 @@ namespace Shooter
     public sealed class FlashLightModel : BaseObjectModel
     {
         public Light Light { get; private set; }
+        public bool IsOn;
         public float maxCharge = 10;
         public float currentCharge;
         public Transform GoFollow;
@@ -18,7 +19,7 @@ namespace Shooter
             {
                 Debug.Log("got the light");
             }
-
+            IsOn = false;
             Debug.Log(VecOffset);
             GoFollow = Camera.main.transform;
             transform.position = Camera.main.transform.position;

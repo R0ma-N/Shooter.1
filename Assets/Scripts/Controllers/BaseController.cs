@@ -2,21 +2,23 @@
 
 namespace Shooter
 {
-    public class BaseController
+    public abstract class BaseController
     {
-        public bool IsActive;
+        protected bool IsActive;
 
         public virtual void On()
         {
             IsActive = true;
+            Debug.Log(IsActive);
         }
 
         public virtual void Off()
         {
             IsActive = false;
+            Debug.Log(IsActive);
         }
 
-        public virtual void Switch()
+        public void Switch()
         {
             Debug.Log("Switch");
             if (IsActive)
@@ -28,6 +30,5 @@ namespace Shooter
                 On();
             }
         }
-
     }
 }
