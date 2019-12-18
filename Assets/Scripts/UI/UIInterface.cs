@@ -10,7 +10,21 @@ namespace Shooter
 
         public BatteryCharge BatteryCharge
         {
-            get; 
+            get
+            {
+                if (!_batteryCharge)
+                {
+                    _batteryCharge = GameObject.FindObjectOfType<BatteryCharge>();
+                }
+
+                return _batteryCharge;
+            }
+
+            set
+            {
+                _batteryCharge = value;
+            }
+
         }
     }
 }

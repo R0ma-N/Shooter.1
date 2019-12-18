@@ -7,17 +7,13 @@ namespace Shooter
 {
     public class BatteryCharge : MonoBehaviour
     {
-        public Image[] _char6;
+        public Image[] UIBatteryDevisions;
+        public Canvas UIBattery;
+        
         void Awake()
         {
-            _char6 = GetComponentsInChildren<Image>();
-            //_char6[0].enabled = false;
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
+            UIBatteryDevisions = GetComponentsInChildren<Image>();
+            UIBattery = GetComponentInParent<Canvas>();
         }
     }
 }
