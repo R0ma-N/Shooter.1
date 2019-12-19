@@ -8,28 +8,27 @@ namespace Shooter
     {
         public Light Light { get; private set; }
         public bool IsOn;
-        public float maxCharge = 10;
-        public float currentCharge;
+        public float MaxCharge = 10;
+        public float CurrentCharge;
+
         public Transform GoFollow;
         public Vector3 VecOffset;
+
+        Timer Timer;
+        
         protected override void Awake()
         {           
             Light = GetComponent<Light>();
-            if (Light)
-            {
-                Debug.Log("got the light");
-            }
             IsOn = false;
-            Debug.Log(VecOffset);
             GoFollow = Camera.main.transform;
             transform.position = Camera.main.transform.position;
             VecOffset = transform.position - GoFollow.position;
+            Timer = new Timer();
         }
 
         private void Update()
         {
-            //Debug.Log(GoFollow);
-            //Debug.Log(VecOffset);
+
         }
     }
 }

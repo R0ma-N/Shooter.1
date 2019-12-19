@@ -4,23 +4,23 @@ namespace Shooter
 {
     public abstract class BaseController
     {
+        public Inventory Inventory = new Inventory();
+        public UIInterface UIInterface = new UIInterface();
+        
         protected bool IsActive;
 
         public virtual void On()
         {
             IsActive = true;
-            Debug.Log(IsActive);
         }
 
         public virtual void Off()
         {
             IsActive = false;
-            Debug.Log(IsActive);
         }
 
         public void Switch()
         {
-            Debug.Log("Switch");
             if (IsActive)
             {
                 Off();

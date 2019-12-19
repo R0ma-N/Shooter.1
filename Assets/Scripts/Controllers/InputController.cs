@@ -4,14 +4,9 @@ namespace Shooter
 {
     public class InputController : BaseController, IOnUpdate
     {
-        private FlashLightController _flashLightController;
+        private FlashLightController _flashLightController = new FlashLightController();
 
-        private KeyCode _activeFlashLight = KeyCode.F;
-        
-        public InputController()
-        {
-            _flashLightController = new FlashLightController();
-        }
+        private KeyCode _activeFlashLight = KeyCode.F;       
         
         public void OnUpdate()
         {

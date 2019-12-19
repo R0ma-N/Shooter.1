@@ -8,17 +8,16 @@ namespace Shooter
     {
         public List<Object> inventory;
         public FlashLightModel FlashLight;
+        public MachineGunModel MachineGun;
 
-        public static Inventory Instance;
-
+        public Inventory()
+        {
+            FlashLight = Object.FindObjectOfType<FlashLightModel>();
+            MachineGun = Object.FindObjectOfType<MachineGunModel>();
+        }
         public void OnStart()
         {
-            Debug.Log("inventory-start");
-            FlashLight = Object.FindObjectOfType<FlashLightModel>();
-            if (FlashLight)
-            {               
-                Debug.Log("inventory-got");
-            }
+           // FlashLight = Object.FindObjectOfType<FlashLightModel>();
         }
     }
 }

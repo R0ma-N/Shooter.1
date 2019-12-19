@@ -1,19 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace Shooter
 {
     public class BatteryCharge : MonoBehaviour
     {
-        public Image[] UIBatteryDevisions;
-        public Canvas UIBattery;
+        public Image[] Devisions;
+        public Canvas Canvas;
+        public bool IsBlinked;
         
         void Awake()
         {
-            UIBatteryDevisions = GetComponentsInChildren<Image>();
-            UIBattery = GetComponentInParent<Canvas>();
+            Devisions = GetComponentsInChildren<Image>();
+            Canvas = GetComponentInParent<Canvas>();
+            IsBlinked = true;
+        }
+
+        private void Update()
+        {
+            Devisions[0].enabled = Canvas.enabled = IsBlinked;
         }
     }
 }

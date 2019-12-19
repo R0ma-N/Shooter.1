@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Shooter
 {
-    public class UIInterface : MonoBehaviour
+    public class UIInterface
     {
         private BatteryCharge _batteryCharge;
 
@@ -16,10 +16,8 @@ namespace Shooter
                 {
                     _batteryCharge = GameObject.FindObjectOfType<BatteryCharge>();
                 }
-
                 return _batteryCharge;
             }
-
             set
             {
                 _batteryCharge = value;
