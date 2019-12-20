@@ -4,14 +4,21 @@ using UnityEngine;
 
 namespace Shooter
 {
-    public abstract class WeaponController : BaseController
+    public class WeaponController : BaseController
     {
         public Transform FirePoint;
-        public GameObject Ammunition;
+        public Ammunition Ammunition;
+        public GameObject ammunition;
+
+        public WeaponController()
+        {
+            ammunition = Ammunition.bullet;
+            FirePoint = Inventory.MachineGun.FirePoint;
+        }
 
         public void Fire()
         {
-            Object.Instantiate(Ammunition, FirePoint.position, Quaternion.identity);
+            Object.Instantiate(ammunition, FirePoint.position, Quaternion.identity);
         }
     }
 }

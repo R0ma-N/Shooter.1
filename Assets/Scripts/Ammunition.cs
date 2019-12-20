@@ -6,15 +6,14 @@ namespace Shooter
 {
     public class Ammunition
     {
-        public BulletModel Bullet;
+        public BulletModel Bullet = new BulletModel();
+        public GameObject bullet;
 
         public Ammunition()
         {
             Bullet = Object.FindObjectOfType<BulletModel>();
-        }
-        void jump()
-        {
-
+            bullet = Bullet.Instance;
+            if(bullet) Debug.Log(9);
         }
     }
 }

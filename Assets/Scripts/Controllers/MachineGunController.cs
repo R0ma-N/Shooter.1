@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Shooter
 {
-    public class MachineGunController : BaseController
+    public class MachineGunController : WeaponController
     {
         private MachineGunModel _machineGun;
         public MachineGunController()
@@ -12,10 +12,6 @@ namespace Shooter
             _machineGun = Inventory.MachineGun;
         }
 
-        public void Shoot()
-        {
-
-        }
 
     }
 }
