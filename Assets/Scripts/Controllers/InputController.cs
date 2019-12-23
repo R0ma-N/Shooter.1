@@ -19,13 +19,11 @@ namespace Shooter
         {
             if (Input.GetKeyDown(_activeFlashLight))
             {
-                Debug.Log("F");
                 _flashLightController.Switch();
             }
 
             if (Input.GetKeyDown(_fire))
             {
-                Debug.Log("fire");
                 _weaponController.Fire();
             }
         }

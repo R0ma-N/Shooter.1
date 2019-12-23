@@ -6,19 +6,18 @@ namespace Shooter
 {
     public class WeaponController : BaseController
     {
-        public Transform FirePoint;
-        public Ammunition Ammunition;
-        public GameObject ammunition;
-
-        public WeaponController()
-        {
-            ammunition = Ammunition.bullet;
-            FirePoint = Inventory.MachineGun.FirePoint;
-        }
+        private WeaponBase _weapon;
 
         public void Fire()
         {
-            Object.Instantiate(ammunition, FirePoint.position, Quaternion.identity);
+            _weapon.Fire();
         }
+
+        public WeaponController()
+        {
+            //Ammunition = new Ammunition();
+            //FirePoint = Inventory.MachineGun.FirePoint;
+        }
+
     }
 }

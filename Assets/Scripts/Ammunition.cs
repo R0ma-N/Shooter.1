@@ -4,16 +4,15 @@ using UnityEngine;
 
 namespace Shooter
 {
-    public class Ammunition
+    public class Ammunition : BaseObjectModel
     {
-        public BulletModel Bullet = new BulletModel();
-        public GameObject bullet;
-
-        public Ammunition()
+        [SerializeField] protected float _timeToDestruct = 10;
+        [SerializeField] protected float _Damage = 10;
+ 
+        public void AddForce(Vector3 dir)
         {
-            Bullet = Object.FindObjectOfType<BulletModel>();
-            bullet = Bullet.Instance;
-            if(bullet) Debug.Log(9);
+            if (!Rigidbody) return;
+            Rigidbody.AddForce(dir);
         }
     }
 }
