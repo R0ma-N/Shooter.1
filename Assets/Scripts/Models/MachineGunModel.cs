@@ -6,7 +6,7 @@ namespace Shooter
 {
     public class MachineGunModel : WeaponBase
     {
-        public Transform FirePoint;
+        //public Transform FirePoint;
         //void Awake()
         //{
         //    FirePoint = GetComponentInChildren<Transform>();
@@ -14,6 +14,7 @@ namespace Shooter
 
         public override void Fire()
         {
+            Debug.Log("MG_fire ",_barrel );
             if (!Ammunition) return;
             var tempAmmunation = Instantiate(Ammunition, _barrel.position, _barrel.rotation);
             tempAmmunation.AddForce(_barrel.forward * _force);

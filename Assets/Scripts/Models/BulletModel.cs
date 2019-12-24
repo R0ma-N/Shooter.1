@@ -6,16 +6,9 @@ namespace Shooter
 {
     public class BulletModel : Ammunition
     {
-
-        private void Start()
+        protected override void Awake()
         {
-
-        }
-
-        private void Update()
-        {
-
-            
+            Destroy(gameObject, _timeToDestruct);
         }
     }
 }

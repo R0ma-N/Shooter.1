@@ -11,6 +11,11 @@ namespace Shooter
 
         public virtual void On()
         {
+            On(null);
+        }
+
+        public virtual void On(BaseObjectModel obj)
+        {
             IsActive = true;
         }
 
@@ -19,7 +24,7 @@ namespace Shooter
             IsActive = false;
         }
 
-        public void Switch()
+        public virtual void Switch()
         {
             if (IsActive)
             {

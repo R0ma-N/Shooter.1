@@ -8,14 +8,10 @@ namespace Shooter
     {
         public Ammunition Ammunition;
 
-        protected Transform _barrel;
-        [SerializeField] protected float _force = 999;
+        public Transform _barrel;
+        [SerializeField] protected float _force = 9999;
         [SerializeField] protected float _rechargeTime = 0.2f;
 
-        public WeaponBase()
-        {
-            _barrel = GetComponentInChildren<Transform>();
-        }
         public abstract void Fire();
     }
 }

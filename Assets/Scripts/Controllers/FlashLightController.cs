@@ -45,7 +45,7 @@ namespace Shooter
             Switch(false);
         }
 
-        private new void Switch()
+        public override void Switch()
         {
             if (_flashLight.IsOn)
             {

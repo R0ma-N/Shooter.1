@@ -22,10 +22,27 @@ namespace Shooter
                 _flashLightController.Switch();
             }
 
-            if (Input.GetKeyDown(_fire))
+            if (Input.GetKeyDown(KeyCode.Backspace))
             {
-                _weaponController.Fire();
+                SelectWeapon(0);
             }
+            //if (Input.GetKeyDown(_fire))
+            //{
+            //    _weaponController.Fire();
+            //}
         }
+
+        private void SelectWeapon(int value)
+        {
+            var tempWeapon = Inventory.SelectWeapon(value);
+            SelectWeapon(tempWeapon);
+        }
+
+        private void SelectWeapon(WeaponBase weapon)
+        {
+            _weaponController.On(weapon);
+        }
+
+
     }
 }
