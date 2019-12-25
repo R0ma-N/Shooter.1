@@ -5,37 +5,36 @@ using UnityEngine;
 
 namespace Shooter
 {
-    public class Inventory : IOnInitialize
+    public class Inventory
     {
         public List<Object> inventory;
         public List<WeaponBase> _weapons;
-
-        //public List<WeaponBase> Weapons => _weapons;
-        private int _selectedWeapon = 0;
+        public WeaponBase ActiveWeapon { get; private set; }
 
         public FlashLightModel FlashLight;
-        public MachineGunModel MachineGun;
         public GameObject Player;
 
         public Inventory()
         {
             FlashLight = Object.FindObjectOfType<FlashLightModel>();
-            MachineGun = Object.FindObjectOfType<MachineGunModel>();
             Player = GameObject.FindGameObjectWithTag("Player");
 
             _weapons = Player.GetComponentsInChildren<WeaponBase>().ToList();
-            Debug.Log(_weapons);
+            Debug.Log(_weapons.Count);
+            Debug.Log(ActiveWeapon);
         }
-        public void OnStart()
+        
+        //public void OnStart()
+        //{
+        //   // FlashLight = Object.FindObjectOfType<FlashLightModel>();
+        //}
+
+
+
+        public void SelectWeapon(int value)
         {
-           // FlashLight = Object.FindObjectOfType<FlashLightModel>();
-        }
-
-
-
-        public WeaponBase SelectWeapon(int value)
-        {
-            return SelectWeapon(_selectedWeapon);
+            ActiveWeapon = _weapons[value];
+            Debug.Log(ActiveWeapon);
         }
 
     }

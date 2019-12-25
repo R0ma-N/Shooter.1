@@ -24,8 +24,8 @@ namespace Shooter
             _weaponController = new WeaponController();
             
             _controllersInit = new IOnInitialize[2];
-            _controllersInit[0] = _inventory;
-            _controllersInit[1] = _flashLightController;
+            //_controllersInit[0] = _inventory;
+            _controllersInit[0] = _flashLightController;
             
             _controllersUpdate = new IOnUpdate[4];
             _controllersUpdate[0] = _inputController;

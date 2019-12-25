@@ -8,7 +8,8 @@ namespace Shooter
         private WeaponController _weaponController = new WeaponController();
 
         private KeyCode _activeFlashLight = KeyCode.F;
-        private KeyCode _fire = KeyCode.Mouse0;
+        //private KeyCode _fire = KeyCode.Mouse0;
+        private KeyCode _cancel = KeyCode.Escape;
 
         public InputController()
         {
@@ -22,27 +23,11 @@ namespace Shooter
                 _flashLightController.Switch();
             }
 
-            if (Input.GetKeyDown(KeyCode.Backspace))
+            if (Input.GetKeyDown(_cancel))
             {
-                SelectWeapon(0);
+                _flashLightController.Off();
+                _weaponController.Off();
             }
-            //if (Input.GetKeyDown(_fire))
-            //{
-            //    _weaponController.Fire();
-            //}
         }
-
-        private void SelectWeapon(int value)
-        {
-            var tempWeapon = Inventory.SelectWeapon(value);
-            SelectWeapon(tempWeapon);
-        }
-
-        private void SelectWeapon(WeaponBase weapon)
-        {
-            _weaponController.On(weapon);
-        }
-
-
     }
 }

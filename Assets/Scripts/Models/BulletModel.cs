@@ -8,6 +8,7 @@ namespace Shooter
     {
         protected override void Awake()
         {
+            base.Awake();
             Destroy(gameObject, _timeToDestruct);
         }
     }
