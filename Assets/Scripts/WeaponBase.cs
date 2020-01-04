@@ -11,7 +11,7 @@ namespace Shooter
         public bool IsReady = true;
         public float ShootInterval;
 
-        [SerializeField] protected float _force = 9999;
+        [SerializeField] protected float _force = 999;
         [SerializeField] protected float _rechargeTime = 0.2f;
 
         protected Timer Timer = new Timer();

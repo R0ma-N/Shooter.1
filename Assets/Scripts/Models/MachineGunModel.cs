@@ -11,13 +11,20 @@ namespace Shooter
         override protected void Awake()
         {
             base.Awake();
-            ShootInterval = 0.1f;
+            ShootInterval = 1;
         }
 
         public override void Fire()
         {
-            var tempAmmunation = Instantiate(Ammunition, _barrel.position, _barrel.rotation);
-                tempAmmunation.AddForce(_barrel.forward * _force);
+            if (IsReady)
+            {
+
+                var tempAmmunation = Instantiate(Ammunition, _barrel.position, _barrel.rotation);
+                    tempAmmunation.AddForce(_barrel.forward * _force);
+                print("FIRE");
+            }
+            
+            
         }
     }
 }

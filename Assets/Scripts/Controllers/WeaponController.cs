@@ -25,8 +25,11 @@ namespace Shooter
             if (Input.GetKey(_fire))
             {
                 _activeWeapon.Fire();
-                if (_timer.TimeIsUp(1)) _activeWeapon.Fire();
-                
+                _activeWeapon.IsReady = Timer.TimeIsUp(1.1f);
+            }
+            else if (Input.GetKeyUp(_fire))
+            {
+                _activeWeapon.IsReady = true;
             }
 
 
