@@ -223,7 +223,7 @@ MonoBehaviour:
     type: 3}
   _barrel: {fileID: 1591483379}
   IsReady: 1
-  ShootInterval: 0.05
+  ShootInterval: 0.1
   _force: 999
   _rechargeTime: 0.2
 --- !u!1 &45892827
@@ -1854,7 +1854,7 @@ MonoBehaviour:
   Rigidbody: {fileID: 0}
   MeshRenderer: {fileID: 0}
   IsOn: 0
-  MaxCharge: 20
+  MaxCharge: 10
   CurrentCharge: 0
   GoFollow: {fileID: 0}
   VecOffset: {x: 0, y: 0, z: 0}

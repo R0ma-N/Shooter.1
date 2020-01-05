@@ -11,13 +11,11 @@ namespace Shooter
         private Timer _timer;
         private KeyCode _fire = KeyCode.Mouse0;
         private int _index = 0;
-        private bool ready = true;
         
         public WeaponController()
         {
             _activeWeapon = Inventory._weapons[0];
             _timer = new Timer();
-
         }
 
         public void OnUpdate()
@@ -25,11 +23,12 @@ namespace Shooter
             if (Input.GetKey(_fire))
             {
                 _activeWeapon.Fire();
-                _activeWeapon.IsReady = Timer.TimeIsUp(1.1f);
+                _activeWeapon.IsReady = _timer.TimeIsUp(_activeWeapon.ShootInterval);
             }
             else if (Input.GetKeyUp(_fire))
             {
                 _activeWeapon.IsReady = true;
+                _timer.DistTime = 0;
             }
 
 
@@ -40,21 +39,13 @@ namespace Shooter
                 Debug.Log(_index);
                 if (_index < Inventory._weapons.Count - 1)
                 {
-                    if (_activeWeapon) _activeWeapon.IsVisible(false);
-                    _index++;
-                    _activeWeapon = Inventory._weapons[_index];
-                    _activeWeapon.IsVisible(true);
-                    Debug.Log(_activeWeapon);
+                    ChangeVisability(_index + 1);
                     return;
                 }
                 
-                if (_index == Inventory._weapons.Count - 1) 
+                if (_index == Inventory._weapons.Count - 1)
                 {
-                    _activeWeapon.IsVisible(false);
-                    _index = 0;
-                    _activeWeapon = Inventory._weapons[_index];
-                    _activeWeapon.IsVisible(true);
-                    Debug.Log(_activeWeapon);
+                    ChangeVisability(0);
                 }
             }
             
@@ -62,25 +53,25 @@ namespace Shooter
             {
                 if (_index > 0)
                 {
-                    _activeWeapon.IsVisible(false);
-                    _index--;
-                    _activeWeapon = Inventory._weapons[_index];
-                    _activeWeapon.IsVisible(true);
-                    Debug.Log(_activeWeapon);
+                    ChangeVisability(_index - 1);
                     return;
                 }
 
                 if (_index == 0)
                 {
-                    _activeWeapon.IsVisible(false);
-                    _index = Inventory._weapons.Count - 1;
-                    _activeWeapon = Inventory._weapons[_index];
-                    _activeWeapon.IsVisible(true);
-                    Debug.Log(_activeWeapon);
+                    ChangeVisability(Inventory._weapons.Count - 1);
                 }
             }
         }
 
-
+        private void ChangeVisability(int index)
+        {
+            Debug.Log("got_method");
+            if (_activeWeapon) _activeWeapon.IsVisible(false);
+            _index = index;
+            _activeWeapon = Inventory._weapons[_index];
+            _activeWeapon.IsVisible(true);
+            Debug.Log(_activeWeapon);
+        }
     }
 }

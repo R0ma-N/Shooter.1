@@ -6,9 +6,8 @@ namespace Shooter
 {
     public class Timer
     {
-        private float DistTime = 0;
+        public float DistTime = 0;
         private float CurTime = 0;
-        public Random Random = new Random();
         private float _random;
         private bool active;
 

@@ -8,23 +8,21 @@ namespace Shooter
     {
         //public Transform FirePoint;
         
-        override protected void Awake()
-        {
-            base.Awake();
-            ShootInterval = 1;
-        }
+        //override protected void Awake()
+        //{
+        //    base.Awake();
+        //    ShootInterval = 1;
+        //}
 
         public override void Fire()
         {
             if (IsReady)
             {
 
-                var tempAmmunation = Instantiate(Ammunition, _barrel.position, _barrel.rotation);
+            var tempAmmunation = Instantiate(Ammunition, _barrel.position, _barrel.rotation);
                     tempAmmunation.AddForce(_barrel.forward * _force);
                 print("FIRE");
-            }
-            
-            
+            }    
         }
     }
 }
