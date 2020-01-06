@@ -10,6 +10,7 @@ namespace Shooter
         private WeaponBase _activeWeapon;
         private Timer _timer;
         private KeyCode _fire = KeyCode.Mouse0;
+        private KeyCode _reload = KeyCode.R;
         private int _index = 0;
         
         public WeaponController()
@@ -22,8 +23,12 @@ namespace Shooter
         {
             if (Input.GetKey(_fire))
             {
-                _activeWeapon.Fire();
-                _activeWeapon.IsReady = _timer.TimeIsUp(_activeWeapon.ShootInterval);
+                if(_activeWeapon.BulletsCount > 0)
+                {
+                    _activeWeapon.Fire();
+                    _activeWeapon.IsReady = _timer.TimeIsUp(_activeWeapon.ShootInterval);
+                }
+                else return;
             }
             else if (Input.GetKeyUp(_fire))
             {
@@ -31,21 +36,19 @@ namespace Shooter
                 _timer.DistTime = 0;
             }
 
-
             float mv = Input.GetAxis("Mouse ScrollWheel");
-
             if (mv > 0)
             {
                 Debug.Log(_index);
                 if (_index < Inventory._weapons.Count - 1)
                 {
-                    ChangeVisability(_index + 1);
+                    ChangeWeapon(_index + 1);
                     return;
                 }
                 
                 if (_index == Inventory._weapons.Count - 1)
                 {
-                    ChangeVisability(0);
+                    ChangeWeapon(0);
                 }
             }
             
@@ -53,18 +56,28 @@ namespace Shooter
             {
                 if (_index > 0)
                 {
-                    ChangeVisability(_index - 1);
+                    ChangeWeapon(_index - 1);
                     return;
                 }
 
                 if (_index == 0)
                 {
-                    ChangeVisability(Inventory._weapons.Count - 1);
+                    ChangeWeapon(Inventory._weapons.Count - 1);
                 }
             }
+
+            if (Input.GetKeyDown(_reload))
+            {
+                if (_activeWeapon.ClipsCount == 0)
+                    return;
+                _activeWeapon.ClipsCount--;
+                _activeWeapon.BulletsCount = _activeWeapon.BulletsInClip;
+            }
+
+            UIInterface.BulletsCount.TxtBullets.text = $"{_activeWeapon.ClipsCount}/{_activeWeapon.BulletsCount}  {Inventory._weapons.Count}";
         }
 
-        private void ChangeVisability(int index)
+        private void ChangeWeapon(int index)
         {
             Debug.Log("got_method");
             if (_activeWeapon) _activeWeapon.IsVisible(false);

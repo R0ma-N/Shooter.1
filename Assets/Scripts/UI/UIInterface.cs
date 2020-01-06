@@ -7,6 +7,7 @@ namespace Shooter
     public class UIInterface
     {
         private BatteryCharge _batteryCharge;
+        private BulletsCount _bulletsCount;
 
         public BatteryCharge BatteryCharge
         {
@@ -23,6 +24,22 @@ namespace Shooter
                 _batteryCharge = value;
             }
 
+        }
+
+        public BulletsCount BulletsCount
+        {
+            get
+            {
+                if (!_bulletsCount)
+                {
+                    _bulletsCount = GameObject.FindObjectOfType<BulletsCount>();
+                }
+                return _bulletsCount;
+            }
+            set
+            {
+                _bulletsCount = value;
+            }
         }
     }
 }

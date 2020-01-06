@@ -7,10 +7,14 @@ namespace Shooter
     public abstract class WeaponBase : BaseObjectModel
     {
         public Ammunition Ammunition;
-        public Transform _barrel;
+        [HideInInspector] public int ClipsCount;
+        public int ClipsMaxCount;
+        [HideInInspector] public int BulletsCount;
+        public int BulletsInClip;
         public bool IsReady = true;
         public float ShootInterval;
 
+        [SerializeField] protected Transform _barrel;
         [SerializeField] protected float _force = 999;
         [SerializeField] protected float _rechargeTime = 0.2f;
 
