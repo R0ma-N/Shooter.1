@@ -9,7 +9,6 @@ namespace Shooter
     {
         public List<Object> inventory;
         public List<WeaponBase> _weapons;
-
         public FlashLightModel FlashLight;
         public GameObject Player;
 
@@ -23,18 +22,12 @@ namespace Shooter
                 weapon.ClipsCount = weapon.ClipsMaxCount;
                 weapon.BulletsCount = weapon.BulletsInClip;
             }
-            Debug.Log(_weapons.Count);
         }
 
-        public void AddWeapon(WeaponBase weapon)
+        public Inventory(bool NewWeapon)
         {
-            _weapons.Add(weapon);
+            Player = GameObject.FindGameObjectWithTag("Player");
+            _weapons = Player.GetComponentsInChildren<WeaponBase>().ToList();
         }
-        
-        //public void OnStart()
-        //{
-        //   // FlashLight = Object.FindObjectOfType<FlashLightModel>();
-        //}
-
     }
 }

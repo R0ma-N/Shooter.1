@@ -17,6 +17,7 @@ namespace Shooter
         {
             _activeWeapon = Inventory._weapons[0];
             _timer = new Timer();
+            WeaponBase.GotNewWeapon += NewWeapon;
         }
 
         public void OnUpdate()
@@ -79,12 +80,21 @@ namespace Shooter
 
         private void ChangeWeapon(int index)
         {
-            Debug.Log("got_method");
+
             if (_activeWeapon) _activeWeapon.IsVisible(false);
             _index = index;
             _activeWeapon = Inventory._weapons[_index];
             _activeWeapon.IsVisible(true);
             Debug.Log(_activeWeapon);
+            Debug.Log(Inventory._weapons.Count);
+        }
+
+        private void NewWeapon()
+        {
+            Inventory = new Inventory(true);
+            ChangeWeapon(Inventory._weapons.Count - 1);
+            _activeWeapon.ClipsCount = _activeWeapon.ClipsMaxCount;
+            _activeWeapon.BulletsCount = _activeWeapon.BulletsInClip;
         }
     }
 }

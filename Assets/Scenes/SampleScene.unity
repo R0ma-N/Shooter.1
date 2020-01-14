@@ -145,7 +145,7 @@ Transform:
   m_Children:
   - {fileID: 1591483379}
   m_Father: {fileID: 534669905}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!65 &45216488
 BoxCollider:
@@ -221,15 +221,15 @@ MonoBehaviour:
   MeshRenderer: {fileID: 0}
   Ammunition: {fileID: 7962413316406712287, guid: ca4759461ce35414a9f03281fcb3886c,
     type: 3}
-  ClipsCount: 0
-  ClipsMaxCount: 7
-  BulletsCount: 0
-  BulletsInClip: 25
-  IsReady: 1
   ShootInterval: 0.1
+  IsReady: 1
+  ClipsMaxCount: 7
+  BulletsInClip: 25
   _barrel: {fileID: 1591483379}
   _force: 999
   _rechargeTime: 0.2
+  ClipsCount: 0
+  BulletsCount: 0
 --- !u!1 &45892827
 GameObject:
   m_ObjectHideFlags: 0
@@ -940,6 +940,7 @@ Transform:
   m_LocalPosition: {x: -0.02, y: 0.58, z: 0.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 2060368695}
   - {fileID: 1669523386}
   - {fileID: 45216487}
   - {fileID: 1333110093}
@@ -1478,7 +1479,7 @@ Transform:
   m_Children:
   - {fileID: 1095981031}
   m_Father: {fileID: 534669905}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1333110094
 MonoBehaviour:
@@ -1496,15 +1497,15 @@ MonoBehaviour:
   MeshRenderer: {fileID: 0}
   Ammunition: {fileID: 7962413316406712287, guid: ca4759461ce35414a9f03281fcb3886c,
     type: 3}
-  ClipsCount: 0
-  ClipsMaxCount: 5
-  BulletsCount: 0
-  BulletsInClip: 9
-  IsReady: 1
   ShootInterval: 1
+  IsReady: 1
+  ClipsMaxCount: 5
+  BulletsInClip: 9
   _barrel: {fileID: 1095981031}
   _force: 999
   _rechargeTime: 0.2
+  ClipsCount: 0
+  BulletsCount: 0
 --- !u!65 &1333110095
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1906,7 +1907,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 534669905}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!108 &1669523387
 Light:
@@ -2000,16 +2001,15 @@ MonoBehaviour:
   Rigidbody: {fileID: 0}
   MeshRenderer: {fileID: 0}
   Ammunition: {fileID: 0}
-  ClipsCount: 0
-  ClipsMaxCount: 0
-  BulletsCount: 0
-  BulletsInClip: 0
-  IsReady: 1
   ShootInterval: 0
+  IsReady: 1
+  ClipsMaxCount: 1
+  BulletsInClip: 100
   _barrel: {fileID: 0}
   _force: 999
   _rechargeTime: 0.2
-  instance: {fileID: 0}
+  ClipsCount: 0
+  BulletsCount: 0
 --- !u!65 &1712317788
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2266,6 +2266,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1853587946}
   m_CullTransparentMesh: 0
+--- !u!1 &2060368694
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2060368695}
+  m_Layer: 0
+  m_Name: WeaponPosition
+  m_TagString: WeaponPosition
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2060368695
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060368694}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.54999995, y: -0.63499993, z: 0.82299995}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 534669905}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2092486830
 GameObject:
   m_ObjectHideFlags: 0
